@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema(
         SecondDose :{
             type: String,
             default: "pending",
-            enum: ["pending", "completed"],
+            enum: ["pending", "completed"], 
             select : false
         },
         VaccinationStatus : {
