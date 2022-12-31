@@ -5,6 +5,11 @@ const errorHandler = require('../errorhandler/errorhandler');
 const createSlot = async function (req, res) {
   try {
     let data = req.body;
+    data['Date'] = new Date(data['Date']);
+    if(data['Date'] == "Invalid Date")
+    {
+      return res.status(400).send({ status : false , msg : "please provide date in YYYY-MM-DD Format"})
+    }
     data["slots"] = [];
     let startTime = 10;    
     for (let i = 0; i < 7; i++) {
