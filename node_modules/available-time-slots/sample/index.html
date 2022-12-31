@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="dist/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+    <style>
+      body > p {
+        display: flex;
+      }
+      
+      #selected-date {
+        margin-left: 1rem;
+      }
+      
+      #nav {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      #nav > * {
+        cursor: pointer;
+      }
+      
+    </style>
+  </head>
+  <body class="index home" itemscope="itemscope" itemtype="http://schema.org/WebPage" id="index">
+    <p>Selected:<span id="selected-date"></span></p>
+    <hr>
+    <div id="nav">
+      <div id="prev">< prev</div>
+      <div id="next">next ></div>
+    </div>
+    <div id="app"></div>
+    <script src="dist/js/main.js"></script>
+    <script src="dist/js/locales.js"></script>
+    <script src="dist/js/sample.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+  </body>
+</html>
