@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema(
             required : [ true , "Age is mandatory"],
             trim : true,
         },
-        password : {
+        Password : {
             type : String,
             required : [ true , "PinCode is mandatory"],
         },
@@ -53,7 +53,7 @@ const UserSchema = new mongoose.Schema(
                 values: ["pending", "completed"],
                 message: "Please enter correct status",
               },
-            select : false
+        
         },
         SecondDose :{
             type: String,
@@ -62,7 +62,7 @@ const UserSchema = new mongoose.Schema(
                 values: ["pending", "completed"],
                 message: "Please enter correct status",
               },
-            select : false
+       
         },
         VaccinationStatus : {
             type: String,

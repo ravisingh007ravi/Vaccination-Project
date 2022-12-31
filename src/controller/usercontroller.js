@@ -7,13 +7,13 @@ const validation = require("../Validation/validation");
 const createUser = async function (req, res) {
   try {
     let data = req.body;
-    if (!validation.isValidPassword(data.password)) {
+    if (!validation.isValidPassword(data.Password)) {
       return res.status(400).send({
         status: false,
         msg: "Password should contain Minimum eight and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character",
       });
     }
-    data.password = await bcrypt.hash(data.password, 10);
+    // data.password = await bcrypt.hash(data.password, 10);
     const createUser = await userModel.create(data);
     return res.status(201).send({ status: true, msg: createUser });
   } catch (err) {

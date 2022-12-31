@@ -48,7 +48,7 @@ const isValidObjectId = function (objectId) {
 const isValidPincode = function (pincode) {
   const PinCodeRegex =
   /^[1-9]{1}[0-9]{5}$/;;
-  return PinCodeRegex.test(mobile);
+  return PinCodeRegex.test(pincode);
 };
 //__________________________ Validations :  PinCode ___________________________________________
 

@@ -30,10 +30,18 @@ const createSlot = async function (req, res) {
 };
 const bookSlot = async function (req, res) {
   try {
-    let userId = req.params.userId;
-    let slotId = req.params.slotId; // add pincode and hospital 
-    let slotsTime = req.body.slotsTime;
-    let slot = await slotModel.findById(slotId).lean();  
+    let userId = req.params.userId;// add pincode and hospital 
+    let data = req.body
+    let slotsTime = data.slotsTime; 
+    if(!slotsTime) return res.status(400).send({status : false , msg : "please provide slot time to BookSlot"})
+    let query = {}
+    let { PinCode , Hospital , ...x } = data
+    if(PinCode && Hospital)
+    {
+      query['PinCode'] = PinCode
+      query['Hospital'] = Hospital
+    }else { return res.status(400).send({ status : false , msg : " Please enter PinCode and Hospital Name to book slot"})}
+    let slot = await slotModel.findOne(query).lean();  
     for (let i = 0; i < slot["slots"].length; i++) {
       if (slotsTime == slot["slots"][i].slotsTime) {
         if (slot["slots"][i].slotsBooked > 9) {
@@ -47,7 +55,7 @@ const bookSlot = async function (req, res) {
       }
     }
     const slotBook = await slotModel.findOneAndUpdate(
-      { _id: slotId },
+      { _id: slot._id },
       { $set: { ...slot } },
       { runValidators: true }
     );
